@@ -1,7 +1,7 @@
 class Book < ApplicationRecord
   has_one_attached :profile_image
   belongs_to :user
-  
+
   def get_profile_image(width,height)
   unless profile_image.attached?
     file_path= Rails.root.join('app/assets/images/tulip.jpeg')
@@ -9,5 +9,8 @@ class Book < ApplicationRecord
   end
   profile_image.variant(resize_to_limit: [width, height]).processed
   end
-  
+
+  validates :title,:body, presence: true
+  validates_length_of :body, maximum: 200
+
 end
