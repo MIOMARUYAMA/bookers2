@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   
-  before_action :authenticate_user!, except: [:top]
+  before_action :authenticate_user!, except: [:top,:about]
 
   def after_sign_in_path_for(resource)
     user_path(@user.id)
@@ -10,6 +10,20 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(resource)
     root_path
   end
+  
+  
+  def signed_up
+    flash[:notice] = "Welcome! You have signed up successfully."
+  end
+  
+  def signed_in
+    flash[:notice] = "Signed in successfully."
+  end
+  
+  def signed_out
+    flash[:notice] = "Signed out successfully."
+  end
+
 
   protected
 

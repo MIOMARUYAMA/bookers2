@@ -1,10 +1,23 @@
-
-
 <div>
   <h2>User info</h2>
   <%= image_tag user.get_profile_image(100,100) %>
-  <p>name<%= user.name %></p>
-  <p>introduction<%= user.introduction %></p>
-  <%= button_to 'ユーザー登録', edit_user_path(user.id), method: :get %>
-
+  
+  <table class="table">
+  <tr>  
+  <th>name</th>
+  <th><%= user.name %></th>
+  </tr>
+  <tr> 
+  <th>introduction</th>
+  <th><%= user.introduction %></th>
+  </tr>
+  </table>
+  <div class="row">
+  </div>
+    <%= link_to edit_user_path(user.id), method: :get do %>
+      <button type="button" class="btn btn-outline-secondary btn-block">
+        <i class="fas fa-user-cog"></i>
+      </button>
+    <%end%>
+  
 </div>
