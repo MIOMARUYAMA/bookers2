@@ -12,8 +12,9 @@
       <% end %>
     </ul>
   <% end %>
-  <div class ="form-group">
+
     <%= form_with model: @book do |f| %>
+    <div class ="form-group">
       <label for="inputTitle">Title</label><br>
       <%= f.text_field :title, autofocus: true, id:"inputTitle" %>
     </div>
@@ -21,8 +22,8 @@
       <label for="inputOpinion">Opinion</label><br>
       <%= f.text_area :body, autofocus: true, id:"inputOpinion" %>
     </div>
-    <div class ="form-group">  
-      <%= f.submit "Update Book" %><br>
+    <div class ="form-group">
+      <%= f.submit "Update Book", class:"btn btn-success" %><br>
     </div>
     <% end %>
     <p><%= link_to "Show", book_path(@book.id) %> | <%= link_to "Back", books_path %></p>
